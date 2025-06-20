@@ -24,7 +24,25 @@ const userAuth= async (req,res,next)=>{
              next();
          
 
-    }catch(err){res.send("Problem arised"+err.message)}
+    }catch(err){res.send(null)}}
 
-}
+
+
+
+
+    export const validateUser=(keys)=>{
+
+        
+        const allowedChange=["firstName","lastName","age","gender","photo","about","skills"];
+
+        for(const key in keys)
+        {
+            if(!allowedChange.includes(key))
+            {
+                throw new Error("Change not allowed")
+            }
+        }
+    }
+
+
 export default userAuth;
